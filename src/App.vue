@@ -7,12 +7,11 @@ import ThrownDice from './components/ThrownDice.vue';
 //app.vue manages dice array + keep track of current rolled state
 const dice = ref([])
 
-//v-model to link app.vue to ThrownDice
-const diceArray = ref('count')
+//const diceArray = ref('')
 </script>
 
 <template>
 
-<ThrownDice v-model="diceArray"/>
-<ScoreTable></ScoreTable>
+<ThrownDice v-model="dice"/>
+<ScoreTable v-model="dice"/>
 </template>
