@@ -1,9 +1,10 @@
 <script setup>
+// ThrownDice contains all logic for rolling + displaying dice
 //roll 5 dice
+
 
 function diceThrow() {
     //reset dice
-    count = { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0 };
 
     //roll dice 5 times
     for (let i = 0; i < 5; i++) {
@@ -11,13 +12,15 @@ function diceThrow() {
         count[roll - 1] = count[roll - 1] + 1;
     } 
 }
+
 //displays 5 rolled dice
 
+
+//v-model to pass dice array from Vue to Throw
+const diceArray = defineModel();
 </script>
 
 <template>
-
-
 <button @click="diceThrow">Throw!</button>
-    
+
 </template>
