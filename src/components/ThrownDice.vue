@@ -15,22 +15,17 @@ function diceThrow() {
 }
 
 //displays 5 rolled dice
-const list = ["one", "two", "three", "four", "five", "six"]
-function displayDie() {
-    for (let i = 0; i < list.length; i++) {
-        image: "imgs/" + list[i] + ".png"
-    }
+function displayDice() {
+  
 }
 
+//testing if tablet editor pushes to origin
+  
 </script>
 
 <template>
 <button @click="diceThrow">Throw!</button>
 
-<div>
-<div v-for="(dice, index) in diceArray" :key="index">
-    {{ dice }}
-</div>
-</div>
+
 
 </template>
