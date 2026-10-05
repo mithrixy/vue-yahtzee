@@ -16,7 +16,7 @@ function diceThrow() {
 
 //displays 5 rolled dice
 function displayDice() {
-  
+    //reset die 
 }
 
 //testing if tablet editor pushes to origin
@@ -24,6 +24,9 @@ function displayDice() {
 </script>
 
 <template>
+  <div> 
+
+  </div>
 <button @click="diceThrow">Throw!</button>
 
 
