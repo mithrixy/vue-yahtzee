@@ -1,7 +1,7 @@
 <script setup>
 // ThrownDice contains all logic for rolling + displaying dice
 //note for myself -> diceArray contains face result
-const diceArray = defineModel({ type: Array});
+const diceArray = defineModel();
 
 function diceThrow() {
     //reset dice
@@ -14,21 +14,19 @@ function diceThrow() {
     diceArray.value = newDice;
 }
 
-//displays 5 rolled dice
-function displayDice() {
-    //reset die 
-}
-
-//testing if tablet editor pushes to origin
+//displays 5 rolled dice 
+//const displayDice
   
 </script>
 
 <template>
-  <div> 
 
-  </div>
-<button @click="diceThrow">Throw!</button>
+    <div>
+        <img v-for="(image, index) in displayDice"> 
+    </img>
+    </div>
+    
 
-
+    <button @click="diceThrow">Throw!</button>
 
 </template>

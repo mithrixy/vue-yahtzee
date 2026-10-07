@@ -1,11 +1,22 @@
 <script setup>
 import { computed } from 'vue'
 
-const list = ["one", "two", "three", "four", "five", "six"]
+const numberToWord = (num) => {
+  const words = [
+    'One',
+    'Two',
+    'Three',
+    'Four',
+    'Five',
+    'Six',
+  ]
+  return words[num] ?? num
+}
 
-const diceArray = defineModel({ type: Array, default: () => [] })
+const diceArray = defineModel()
 
-// counts[0] = number of ones ... counts[5] = number of sixes
+// finds
+// counts[0] = number of 1s
 const counts = computed(() =>
   [1, 2, 3, 4, 5, 6].map(n => diceArray.value.filter(d => d === n).length)
 )
@@ -19,6 +30,7 @@ const faces = computed(() => counts.value.map(c => (c > 0 ? 1 : 0)).join(''))
 const upper = computed(() => counts.value.map((c, i) => c * (i + 1)))
 const upperTotal = computed(() => upper.value.reduce((a, b) => a + b, 0))
 
+// distinguish between 3/4 of a kind and change
 const lower = computed(() => ({
   'Three of a Kind': maxCount.value >= 3 ? sum.value : 0,
   'Four of a Kind': maxCount.value >= 4 ? sum.value : 0,
@@ -26,19 +38,19 @@ const lower = computed(() => ({
   'Small Straight': faces.value.includes('1111') ? 30 : 0,
   'Large Straight': faces.value.includes('11111') ? 40 : 0,
   'Yahtzee': maxCount.value === 5 ? 50 : 0,
-  'Chance': sum.value,
+  'Change': sum.value,
 }))
 </script>
 
 <template>
-  <table>
+  <table class="table">
     <tr>
       <th>Part 1</th>
       <th>Score</th>
     </tr>
 
     <tr v-for="(score, index) in upper" :key="index">
-      <th>{{ index + 1 }}</th>
+      <th>{{ numberToWord(index) }}</th>
       <td>{{ score }}</td>
     </tr>
 
