@@ -13,17 +13,15 @@ function diceThrow() {
     } 
     diceArray.value = newDice;
 }
-
-//displays 5 rolled dice 
-//const displayDice
-  
 </script>
 
 <template>
 
     <div>
-        <img v-for="(image, index) in displayDice"> 
-    </img>
+        <img v-for="(image, index) in dice"
+            :key="index"
+            :src="/src/assets/dice${die}.png"
+      />
     </div>
     
 
