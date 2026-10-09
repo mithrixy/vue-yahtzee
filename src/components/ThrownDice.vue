@@ -20,8 +20,10 @@ function diceThrow() {
     <div>
         <img v-for="(image, index) in dice"
             :key="index"
-            :src="/src/assets/dice${die}.png"
+            :src="`/assets/${image}.png`"
+            class="diceDisplay"
       />
+
     </div>
     
 
