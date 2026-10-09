@@ -18,15 +18,17 @@ function diceThrow() {
 <template>
 
     <div>
-        <img v-for="(image, index) in dice"
+        <img v-for="(image, index) in diceArray "
             :key="index"
-            :src="`/assets/${image}.png`"
+            :src="`public/assets/${image}.png`"
             class="diceDisplay"
       />
 
     </div>
     
-
-    <button @click="diceThrow">Throw!</button>
+    <div id="button">
+        <button @click="diceThrow">Throw!</button>
+    </div>
+    
 
 </template>

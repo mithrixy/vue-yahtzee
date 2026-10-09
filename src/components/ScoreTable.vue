@@ -31,15 +31,24 @@ const upper = computed(() => counts.value.map((c, i) => c * (i + 1)))
 const upperTotal = computed(() => upper.value.reduce((a, b) => a + b, 0))
 
 // distinguish between 3/4 of a kind and change
-const lower = computed(() => ({
-  'Three of a Kind': maxCount.value >= 3 ? sum.value : 0,
-  'Four of a Kind': maxCount.value >= 4 ? sum.value : 0,
-  'Full House': counts.value.includes(3) && counts.value.includes(2) ? 25 : 0,
-  'Small Straight': faces.value.includes('1111') ? 30 : 0,
-  'Large Straight': faces.value.includes('11111') ? 40 : 0,
-  'Yahtzee': maxCount.value === 5 ? 50 : 0,
-  'Change': sum.value,
-}))
+const lower = computed(() => {
+  const isFullHouse =
+    counts.value.includes(3) && counts.value.includes(2)
+
+  const scores = {
+    'Three of a Kind': maxCount.value === 3 ? sum.value : 0,
+    'Four of a Kind': maxCount.value === 4 ? sum.value : 0,
+    'Full House': isFullHouse ? 25 : 0,
+    'Small Straight': faces.value.includes('1111') && !faces.value.includes('11111') ? 30 : 0,
+    'Large Straight': faces.value.includes('11111') ? 40 : 0,
+    'Yahtzee': maxCount.value === 5 ? 50 : 0,
+  }
+// Change only filled when no other combination scores
+  scores['Change'] = Object.values(scores).every(score => score === 0)
+    ? sum.value
+    : 0
+  return scores
+})
 </script>
 
 <template>
