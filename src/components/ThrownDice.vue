@@ -17,16 +17,14 @@ function diceThrow() {
 
 <template>
 
-    <div>
+    <div class="container">
         <img v-for="(image, index) in diceArray "
             :key="index"
             :src="`public/assets/${image}.png`"
             class="diceDisplay"
       />
-
     </div>
-    
-    <div id="button">
+    <div class="container2">
         <button @click="diceThrow">Throw!</button>
     </div>
     
