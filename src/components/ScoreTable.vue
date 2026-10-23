@@ -15,7 +15,8 @@ const numberToWord = (num) => {
 
 const diceArray = defineModel()
 
-// finds
+// feedback: improve legibility of function names + variables
+// functions shouldn't need an explanation- understoood as it is written
 // counts[0] = number of 1s
 const counts = computed(() =>
   [1, 2, 3, 4, 5, 6].map(n => diceArray.value.filter(d => d === n).length)
